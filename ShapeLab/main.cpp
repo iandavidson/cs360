@@ -2,6 +2,7 @@
 #include <string>
 #include <cmath>
 #include "Square.h"
+#include "Rectangle.h"
 #include "EquiTris.h"
 #include "IsoTriangle.h"
 #include "RightTriangle.h"
