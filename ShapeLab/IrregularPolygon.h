@@ -19,12 +19,14 @@ class IrregularPolygon
   
   float getNumSides()const;
   
+  vector<float> getSides();
   
+  vector<float> getAngles();
 
   float getArea()const;
 
   float getPerimeter()const;
-
+  
 
   friend ostream & operator << (ostream & outs, const IrregularPolygon & s);
   
@@ -38,7 +40,7 @@ class IrregularPolygon
   vector<float> angles;
 
   void setNumSides(float i);    will literally break it
-
+  float triangleArea(float s1, float s2, float s3);
 };
 
 

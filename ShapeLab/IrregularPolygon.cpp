@@ -1,4 +1,5 @@
 #include "IrregularPolygon.h"
+#include <cmath>
 
 using namespace std;
 
@@ -11,8 +12,9 @@ IrregularPolygon::IrregularPolygon()//edit this shit
 IrregularPolygon::IrregularPolygon(const IrregularPolygon & s)	//edit this shit
 //copy constructor
 {
-  //this.setSide(s.getSide());
-  side = s.side;
+  numSides = getNumSides();
+  sides = s.getSides();
+  angles = s.getAngles();
 }
 
 IrregularPolygon::~IrregularPolygon()
@@ -23,48 +25,77 @@ IrregularPolygon::~IrregularPolygon()
 IrregularPolygon & IrregularPolygon::operator = (const IrregularPolygon & s) //overloaded assignment operator
 //edit this shit
 {
-  side = s.side;
+  numSides = s.getNumSides();
+  sides = s.getSides();
+  angles = s.getAngles();
   return * this;
   
 }
 
-float IrregularPolygon::getSide() const
+float IrregularPolygon::getNumsides() const
 {
-  return side;
+  return sides;
 
 }
 
-void IrregularPolygon::setSide(float s)
+vector<float> IrregularPolygon::getSides()
 {
-  side = s;
+  return sides;
+
 }
+
+vector<float> IrregularPolygon::getAngles()
+{
+  return angles;
+
+}
+
+float IrregularPolygon::triagleArea(float s1, float s2, float s3)
+{
+  float s = (s1 + s2 + s3)/2;
+  return sqrt(s *(s - s1) * (s - s2) * (s - s3));
 
 
 float IrregularPolygon::getArea() const
 {
-  return side * side;
+ // needs work 
 }
 
 float IrregularPolygon::getPerimeter() const
 {
-  return side * 4;
+  int perimeter = 0;
+  for (int i = 0; i < numSides; i++){
+    perimeter += sides[i];
+  }
+  return perimeter;
 }
 
 ostream & operator << (ostream & outs, const IrregularPolygon & s)
 {
-  outs << "A IrregularPolygon with side length of " << s.getSide() << ", has a perimeter of ";
+  outs << "A Irregular Polygon with " << s.getNumSides() << " sides" << ", has a perimeter of ";
   outs << s.getPerimeter() << ", and an area of " << s.getArea() << "." << endl;
   return outs;
 }
 
 bool IrregularPolygon::operator == (IrregularPolygon other) const
 {
-  return side == other.side;
+  if (numSides != other.numSides)
+      return false;
+  for (int i = 0; i < numSides; i++) {
+      if ((sides[i] != other.sides[i]) || (angles[i] != other.angles[i]))
+          return false;
+  }
+  return true;
 }
 
 bool IrregularPolygon::operator != (const IrregularPolygon & other) const
 {
-  return side != other.side;
+  for (int i = 0; i < numSides; i++) {
+      if ((sides[i] != other.sides[i]) || (angles[i] != other.angles[i]))
+          return true;
+  }
+  return false;
+
 }
 
 
