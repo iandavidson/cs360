@@ -1,0 +1,68 @@
+#include "EQUITRIS.h"
+
+using namespace std;
+
+EQUITRIS::EQUITRIS()
+
+{
+	side = 0;
+}
+
+EQUITRIS::EQUITRIS(const EQUITRIS & e)
+{
+	side = e.side;
+}
+
+EQUITRIS::~EQUITRIS()
+{
+
+}
+
+EQUITRIS & EQUITRIS::operator = (const EQUITRIS & e)
+{
+	side = e.side;
+	return * this;
+}
+
+float EQUITRIS::getSide() const
+{
+	return side;
+}
+
+
+void EQUITRIS::setSide(float s)
+{
+	side = s;
+}
+
+float EQUITRIS::getArea() const
+{
+	return ((sqrt(3)/4) * side * side);
+}
+
+
+float EQUITRIS::getPerimeter() const
+{
+	return side * 3;
+}
+
+ostream & operator << (ostream & outs, const EQUITRIS & e)
+{
+	outs << "A equalateral triangle with side length of " << e.getSide() << ", has a perimeter of ";
+  	outs << e.getPerimeter() << ", and an area of " << e.getArea() << "." << endl;
+  	return outs;
+}
+
+bool EQUITRIS::operator == (EQUITRIS other) const
+{
+	return side == other.side;
+}
+
+
+bool EQUITRIS::operator != (const EQUITRIS & other) const
+{
+	return side != other.side;
+}
+
+
+

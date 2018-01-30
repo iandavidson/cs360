@@ -1,0 +1,27 @@
+
+app.x: Square.o EquiTris.o IsoTriangle.o RightTriangle.o ScaleneTriangle.o Circle.o main.o 
+	g++ -o app.x Square.o EquiTris.o IsoTriangle.o RightTriangle.o ScaleneTriangle.o Circle.o main.o
+
+Square.o: Square.cpp Square.h
+	g++ -c Square.cpp -o Square.o
+
+EquiTris.o: EquiTris.cpp EquiTris.h
+	g++ -c EquiTris.cpp -o EquiTris.o
+
+IsoTriangle.o: IsoTriangle.cpp IsoTriangle.h
+	g++ -c IsoTriangle.cpp -o IsoTriangle.o
+
+RightTriangle.o: RightTriangle.cpp RightTriangle.h
+	g++ -c RightTriangle.cpp -o RightTriangle.o
+
+ScaleneTriangle.o: ScaleneTriangle.cpp ScaleneTriangle.h
+	g++ -c ScaleneTriangle.cpp -o ScaleneTriangle.o
+
+Circle.o: Circle.cpp Circle.h
+	g++ -c Circle.cpp -o Circle.o
+
+main.o: main.cpp
+	g++ -c main.cpp -o main.o
+
+clean:
+	rm *.o *.x
