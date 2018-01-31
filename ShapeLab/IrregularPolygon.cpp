@@ -40,7 +40,7 @@ IrregularPolygon & IrregularPolygon::operator = (const IrregularPolygon & s) //o
   
 }
 
-float IrregularPolygon::getNumsides() const
+float  IrregularPolygon::getNumSides() const
 {
   return numSides;
 
@@ -62,9 +62,10 @@ float IrregularPolygon::triangleArea(float s1, float s2, float s3)
 {
   float s = (s1 + s2 + s3)/2;
   return sqrt(s *(s - s1) * (s - s2) * (s - s3));
-
+}
 
 float IrregularPolygon::getArea() const
+
 {
   if(numSides == 3){
     return triangleArea(sides[0], sides[1], sides[2]);
@@ -82,8 +83,8 @@ float IrregularPolygon::getArea() const
      
     if(firstLoop){
       //compute cosine idenity with a[0] side[0] & side[currentSideIndex]
-      line1 = (side[0] * side[0]) + (side[currentSideIndex] * side[currentSideIndex]);
-      line1 += sqrt(2 *(side[0] * side[currentSideIndex]) * cos (angles[0]));
+      line1 = (sides[0] * sides[0]) + (sides[currentSideIndex] * sides[currentSideIndex]);
+      line1 += sqrt(2 *(sides[0] * sides[currentSideIndex]) * cos (angles[0]));
       lines.push_back(line1);
       //now with line we can do sine law to get the part of angles[currentSideIndex]
       partialAngle1 = (lines[0]*angles[0])/sides[currentSideIndex];
