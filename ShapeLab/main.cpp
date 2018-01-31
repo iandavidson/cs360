@@ -7,6 +7,7 @@
 #include "IsoTriangle.h"
 #include "RightTriangle.h"
 #include "ScaleneTriangle.h"
+#include "IrregularPolygon.h"
 
 using namespace std;
 
@@ -101,35 +102,49 @@ int main()
 
 //Scalene triangle testing
 
-  ScaleneTriangle s1;
-  s1.setSide1(5);
-  s1.setSide2(6);
-  s1.setSide3(7);
+  // ScaleneTriangle s1;
+  // s1.setSide1(5);
+  // s1.setSide2(6);
+  // s1.setSide3(7);
 
-  cout << s1; //all get all sides, get area and perimeter and output operator
-
-
-  ScaleneTriangle s2 = s1; //copy constructor
+  //cout << s1; //all get all sides, get area and perimeter and output operator
 
 
-  s2.setSide3(10);
-
-  s1 = s2;
-
-  cout << s1 << "side3 should be 10, not 7" << endl;
+  // ScaleneTriangle s2 = s1; //copy constructor
 
 
-  if(s1 == s2){
-    cout << "equality not works" << endl;
-  }
+  // s2.setSide3(10);
 
-  s1.setSide2(15);
+  // s1 = s2;
 
-  if(s1 != s2){
-    cout << "inequality operator works" << endl;
-  }
+  // cout << s1 << "side3 should be 10, not 7" << endl;
 
 
+  // if(s1 == s2){
+    // cout << "equality not works" << endl;
+  // }
+
+  // s1.setSide2(15);
+
+  // if(s1 != s2){
+   //  cout << "inequality operator works" << endl;
+  //}
+  
+  vector<float> sides;
+  sides.push_back(12);
+  sides.push_back(23);
+  sides.push_back(34);
+  sides.push_back(54);
+  vector<float> angles;
+  angles.push_back(60);
+  angles.push_back(100);
+  angles.push_back(100);
+  angles.push_back(100);
+  
+  IrregularPolygon *poly = new IrregularPolygon(4, sides, angles);
+
+  cout << *poly << endl;
+  delete poly;
 
 
 
@@ -137,8 +152,7 @@ int main()
 
 
 
-
-  cout <<"successful" << endl;
+   cout <<"successful" << endl;
 
 
 

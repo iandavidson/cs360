@@ -1,6 +1,6 @@
 
-app.x: Rectangle.o Square.o EquiTris.o IsoTriangle.o RightTriangle.o ScaleneTriangle.o Circle.o main.o 
-	g++ -o app.x Rectangle.o Square.o EquiTris.o IsoTriangle.o RightTriangle.o ScaleneTriangle.o Circle.o main.o
+app.x: Rectangle.o Square.o EquiTris.o IsoTriangle.o RightTriangle.o ScaleneTriangle.o Circle.o IrregularPolygon.o main.o 
+	g++ -o app.x Rectangle.o Square.o EquiTris.o IsoTriangle.o RightTriangle.o ScaleneTriangle.o Circle.o IrregularPolygon.o main.o
 
 Rectangle.o: Rectangle.cpp Rectangle.h
 	g++ -c Rectangle.cpp -o Rectangle.o

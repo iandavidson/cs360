@@ -20,9 +20,9 @@ class IrregularPolygon
   
   float getNumSides()const;
   
-  vector<float> & getSides()const;
+  vector<float>  getSides()const;
   
-  vector<float> & getAngles()const;
+  vector<float>  getAngles()const;
 
   float getArea()const;
 
@@ -41,7 +41,7 @@ class IrregularPolygon
   vector<float> angles;
 
   void setNumSides(float i);  //  will literally break it
-  float triangleArea(float s1, float s2, float s3);
+  float triangleArea(float s1, float s2, float s3) const;
 };
 
 

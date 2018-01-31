@@ -46,19 +46,19 @@ float  IrregularPolygon::getNumSides() const
 
 }
 
-vector<float> & IrregularPolygon::getSides() const
+vector<float> IrregularPolygon::getSides() const
 {
   return sides;
 
 }
 
-vector<float> & IrregularPolygon::getAngles() const
+vector<float> IrregularPolygon::getAngles() const
 {
   return angles;
 
 }
 
-float IrregularPolygon::triangleArea(float s1, float s2, float s3)
+float IrregularPolygon::triangleArea(float s1, float s2, float s3) const
 {
   float s = (s1 + s2 + s3)/2;
   return sqrt(s *(s - s1) * (s - s2) * (s - s3));
@@ -94,7 +94,7 @@ float IrregularPolygon::getArea() const
 
       //float angles[currentAngleIndex] - partialAngle1;
 
-      currentSideindex--;
+      currentSideIndex--;
       firstLoop = false;
     }
   
