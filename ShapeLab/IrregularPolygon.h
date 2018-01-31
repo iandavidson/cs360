@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <iostream>
+#include <stdlib.h>
 #include <iomanip>
 
 using namespace std;
@@ -19,9 +20,9 @@ class IrregularPolygon
   
   float getNumSides()const;
   
-  vector<float> getSides();
+  vector<float> & getSides()const;
   
-  vector<float> getAngles();
+  vector<float> & getAngles()const;
 
   float getArea()const;
 

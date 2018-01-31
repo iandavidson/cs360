@@ -46,13 +46,13 @@ float IrregularPolygon::getNumsides() const
 
 }
 
-vector<float> IrregularPolygon::getSides()
+vector<float> & IrregularPolygon::getSides() const
 {
   return sides;
 
 }
 
-vector<float> IrregularPolygon::getAngles()
+vector<float> & IrregularPolygon::getAngles() const
 {
   return angles;
 
@@ -77,7 +77,7 @@ float IrregularPolygon::getArea() const
   vector<float> partialAngles;
   float line1, partialAngle1;
   bool firstLoop = true;
-  int l = 0;//lines accumulator 
+  int l = 0;//lines/partialAngles accumulator 
   while(currentSideIndex != 2){
      
     if(firstLoop){
@@ -151,11 +151,11 @@ bool IrregularPolygon::operator == (IrregularPolygon other) const
 bool IrregularPolygon::operator != (const IrregularPolygon & other) const
 {
   for (int i = 0; i < numSides; i++) {
-      if ((sides[i] != other.sides[i]) || (angles[i] != other.angles[i]))
+      if ((sides[i] != other.sides[i]) || (angles[i] != other.angles[i])){
           return true;
+      }
   }
   return false;
-
 }
 
 
