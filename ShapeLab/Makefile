@@ -23,6 +23,9 @@ ScaleneTriangle.o: ScaleneTriangle.cpp ScaleneTriangle.h
 Circle.o: Circle.cpp Circle.h
 	g++ -c Circle.cpp -o Circle.o
 
+IrregularPolygon.o: IrregularPolygon.cpp IrregularPolygon.h
+	g++ -c IrregularPolygon.cpp -o IrregularPolygon.o
+
 main.o: main.cpp
 	g++ -c main.cpp -o main.o
 
