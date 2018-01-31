@@ -60,13 +60,21 @@ vector<float> IrregularPolygon::getAngles() const
 
 float IrregularPolygon::triangleArea(float s1, float s2, float s3) const
 {
+  cout << "s1: " << s1 << " s2: " << s2 << " s3: " << s3 << endl;
   float s = (s1 + s2 + s3)/2;
-  return sqrt(s *(s - s1) * (s - s2) * (s - s3));
+  s = (s *(s - s1) * (s - s2) * (s - s3));
+  if(s < 0)
+    s = -1 * s;
+  return sqrt(s);
 }
 
 float IrregularPolygon::getArea() const
 
 {
+
+  // float temp = triangleArea(sides[0], sides[1], sides[2]);
+  // cout << "triangle area 1" << temp << endl;
+
   if(numSides == 3){
     return triangleArea(sides[0], sides[1], sides[2]);
   }
@@ -76,37 +84,42 @@ float IrregularPolygon::getArea() const
   //must have at least 4 sides
   vector <float> lines;
   vector<float> partialAngles;
-  float line1, partialAngle1;
+  float line1, partialAngle1, temp;
   bool firstLoop = true;
   int l = 0;//lines/partialAngles accumulator 
-  while(currentSideIndex != 2){
+  while(currentSideIndex > 2){
      
     if(firstLoop){
       //compute cosine idenity with a[0] side[0] & side[currentSideIndex]
       line1 = (sides[0] * sides[0]) + (sides[currentSideIndex] * sides[currentSideIndex]);
-      line1 += sqrt(2 *(sides[0] * sides[currentSideIndex]) * cos (angles[0]));
+      temp = -1 * (sides[0] * sides[currentSideIndex]) * cos (angles[0]);
+      cout << "temp: " << temp << endl;
+      line1 += sqrt(2 * temp);
+      //cout << "cos(angle[0])" << cos(angles[0]) << endl;
       lines.push_back(line1);
       //now with line we can do sine law to get the part of angles[currentSideIndex]
       partialAngle1 = (lines[0]*angles[0])/sides[currentSideIndex];
       partialAngles.push_back(partialAngle1);
-
+      
       area += triangleArea(sides[0], sides[currentSideIndex], lines[0]);  //add first 
 
       //float angles[currentAngleIndex] - partialAngle1;
 
       currentSideIndex--;
       firstLoop = false;
+      cout << "made it through the first iteration" << endl;
     }
   
   line1 = (lines[l] *  lines[l]) + (sides[currentSideIndex] * sides[currentSideIndex]);
-  line1 += sqrt(2 * sides[currentSideIndex] * lines[l] * cos (angles[currentAngleIndex] - partialAngles[l]));
+  line1 += sqrt(-1 * (2 * sides[currentSideIndex] * lines[l] * cos (angles[currentAngleIndex] - partialAngles[l])));
   lines.push_back(line1);
 
   partialAngle1 = (lines[l] * partialAngles[l])/ sides[currentSideIndex];
   partialAngles.push_back(partialAngle1);
 
-  area += triangleArea(sides[currentSideIndex], lines[l], lines[l+1]);
-
+  temp = triangleArea(sides[currentSideIndex], lines[l], lines[l+1]);
+  area += temp;
+  //cout << "triangle area: " << triangleArea(sides[currentSideIndex], lines[l], lines[l+1]);
   //things to inc/dec:  
   //  ++: l
   //  --: currentSideIndex, currentAngleIndex  
@@ -114,11 +127,17 @@ float IrregularPolygon::getArea() const
   l++;
   currentSideIndex--;
   currentAngleIndex--;
-
+  cout << "after iteration; l:" << l << " csi: " << currentSideIndex << " cai: " << currentAngleIndex << endl;
   }
 
+
   // compute & += area of last triangle
-  area += triangleArea(sides[1], sides[2], lines[l]);
+  temp = triangleArea(sides[1], sides[2], lines[l]);
+  if(temp < 0)
+    temp = temp * (- 1);
+  area += temp;
+
+  cout << "area: " << area << endl;
   return area;
 }
 
@@ -134,7 +153,8 @@ float IrregularPolygon::getPerimeter() const
 ostream & operator << (ostream & outs, const IrregularPolygon & s)
 {
   outs << "A Irregular Polygon with " << s.getNumSides() << " sides" << ", has a perimeter of ";
-  outs << s.getPerimeter() << ", and an area of " << s.getArea() << "." << endl;
+  outs << s.getPerimeter() << ", and an area of ";
+  outs << s.getArea() << "." << endl;
   return outs;
 }
 
