@@ -7,6 +7,8 @@
 #include "IsoTriangle.h"
 #include "RightTriangle.h"
 #include "ScaleneTriangle.h"
+#include "Parallelogram.h"
+#include "Trapazoid.h"
 #include "IrregularPolygon.h"
 
 using namespace std;
