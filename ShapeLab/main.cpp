@@ -7,9 +7,8 @@
 #include "IsoTriangle.h"
 #include "RightTriangle.h"
 #include "ScaleneTriangle.h"
-#include "Parallelogram.h"
-#include "Trapazoid.h"
 #include "IrregularPolygon.h"
+#include "Parallelogram.h"
 
 using namespace std;
 
@@ -132,7 +131,7 @@ int main()
    //  cout << "inequality operator works" << endl;
   //}
   
-  vector<float> sides;
+  /*vector<float> sides;
   sides.push_back(12);
   sides.push_back(23);
   sides.push_back(34);
@@ -147,9 +146,15 @@ int main()
 
   cout << *poly << endl;
   delete poly;
+  */
 
-
-
+  Parallelogram p1;
+  p1.setSide1(20);
+  p1.setSide2(20);
+  p1.setAngle(60);
+  cout << p1 << endl;
+  
+  
 
 
 

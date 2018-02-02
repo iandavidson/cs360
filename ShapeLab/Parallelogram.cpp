@@ -1,4 +1,6 @@
 #include "Parallelogram.h"
+#include <stdio.h>
+#include<math.h>
 using namespace std;
 
 Parallelogram::Parallelogram()
@@ -67,7 +69,9 @@ void Parallelogram::setAngle(float s)
 
 float Parallelogram::getArea() const
 {
-  return side1 * side2;//fix this
+  float radians = angle * (M_PI/180);
+  return (side1 * side2) * sin(radians);
+
 }
 
 float Parallelogram::getPerimeter() const
