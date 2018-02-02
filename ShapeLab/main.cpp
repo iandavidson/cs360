@@ -9,6 +9,7 @@
 #include "ScaleneTriangle.h"
 #include "IrregularPolygon.h"
 #include "Parallelogram.h"
+#include "Trapazoid.h"
 
 using namespace std;
 
@@ -148,13 +149,19 @@ int main()
   delete poly;
   */
 
-  Parallelogram p1;
-  p1.setSide1(20);
-  p1.setSide2(20);
-  p1.setAngle(60);
-  cout << p1 << endl;
+  // Testing for Parallleogram
+  //Parallelogram p1;
+  //p1.setSide1(20);
+  //p1.setSide2(20);
+  //p1.setAngle(60);
+  //cout << p1 << endl;
   
-  
+  //Testing for a Trapezoid
+  Trapazoid s1;
+  s1.setTop(12.6);
+  s1.setBottom(12.3);
+  s1.setHeight(12.2);
+  cout << s1 << endl;
 
 
 
