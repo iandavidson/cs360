@@ -8,10 +8,17 @@ EquiTris::EquiTris()
 	side = 0;
 }
 
+EquiTris::EquiTris(float s)
+{
+	side = s;
+}
+
 EquiTris::EquiTris(const EquiTris & e)
 {
 	side = e.side;
 }
+
+
 
 EquiTris::~EquiTris()
 {

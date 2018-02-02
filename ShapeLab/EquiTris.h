@@ -11,6 +11,7 @@ class EquiTris
 {
 public:
 	EquiTris();
+	EquiTris(float s);
 	EquiTris(const EquiTris & e);
 	~EquiTris();
 

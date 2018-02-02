@@ -11,6 +11,7 @@ class IsoTriangle
 {
 public:
 	IsoTriangle();
+	IsoTriangle(float base, float side);
 	IsoTriangle(const IsoTriangle & i);
 	~IsoTriangle();
 

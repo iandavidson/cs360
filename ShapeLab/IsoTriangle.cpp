@@ -9,6 +9,13 @@ IsoTriangle::IsoTriangle()
 	base = 0;
 }
 
+IsoTriangle::IsoTriangle(float b, float s)
+
+{
+	side = s;
+	base = b;
+}
+
 IsoTriangle::IsoTriangle(const IsoTriangle & i)
 {
 	side = i.side;

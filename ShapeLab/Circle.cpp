@@ -7,6 +7,12 @@ Circle::Circle()
   radius = 0;
 }
 
+Circle::Circle(float r)
+{
+  radius = r;
+}
+
+
 Circle::Circle(const Circle & s)
 //copy constructor
 {

@@ -12,6 +12,7 @@ class Circle
  public:
 
   Circle();//constructor
+  Circle(float radius);
   Circle(const Circle & Circle);//copy constructor
   ~Circle();//destructor
 

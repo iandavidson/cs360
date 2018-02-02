@@ -11,6 +11,7 @@ class Square
  public:
 
   Square();//constructor
+  Square(float s);
   Square(const Square & square);//copy constructor
   ~Square();//destructor
 

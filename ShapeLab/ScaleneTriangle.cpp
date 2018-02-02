@@ -3,11 +3,17 @@
 using namespace std;
 
 ScaleneTriangle::ScaleneTriangle()
-
 {
 	side1 = 0;
 	side2 = 0;
 	side3 = 0;
+}
+
+ScaleneTriangle::ScaleneTriangle(float s1, float s2, float s3)
+{
+	side1 = s1;
+	side2 = s2;
+	side3 = s3;
 }
 
 ScaleneTriangle::ScaleneTriangle(const ScaleneTriangle & e)
@@ -77,9 +83,9 @@ float ScaleneTriangle::getArea() const
 
 ostream & operator << (ostream & outs, const ScaleneTriangle & r)
 {
-	outs << "A scalene triangle with side1 length of " << r.getSide1() << " a  side2 of ";
-	outs << r.getSide2() << " and a side3 of length " << r.getSide3() << ", has a perimeter of ";
-  	outs << r.getPerimeter() << ", and an area of "; 
+	outs << "Scalene triangle with side1: " << r.getSide1() << "; side2: ";
+	outs << r.getSide2() << " ; side3: " << r.getSide3() << ", perimeter: ";
+  	outs << r.getPerimeter() << "; area: "; 
   	outs << r.getArea() << "." << endl;
   	return outs;
 }

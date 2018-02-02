@@ -1,5 +1,5 @@
-#ifndef ScaleneTRIANGLE_H
-#define ScaleneTRIANGLE_H
+#ifndef SCALENETRIANGLE_H
+#define SCALENETRIANGLE_H
 
 #include <iostream>
 #include <iomanip>
@@ -11,6 +11,7 @@ class ScaleneTriangle
 {
 public:
 	ScaleneTriangle();
+	ScaleneTriangle(float s1, float s2, float s3);
 	ScaleneTriangle(const ScaleneTriangle & r);
 	~ScaleneTriangle();
 

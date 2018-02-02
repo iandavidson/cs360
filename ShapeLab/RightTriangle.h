@@ -11,6 +11,7 @@ class RightTriangle
 {
 public:
 	RightTriangle();
+	RightTriangle(float base, float side);
 	RightTriangle(const RightTriangle & r);
 	~RightTriangle();
 
@@ -19,20 +20,20 @@ public:
 	float getSide() const;
 	void setSide(float s);
 
-	float getOther() const;
-	void setOther(float o);
+	float getBase() const;
+	void setBase(float o);
 
 	float getArea()const;
 	float getPerimeter()const;
 
 	friend ostream & operator << (ostream & outs, const RightTriangle & e);
 
-	bool operator == (RightTriangle other) const;
-	bool operator != (const RightTriangle & other) const;
+	bool operator == (RightTriangle base) const;
+	bool operator != (const RightTriangle & base) const;
 
 private:
 	float side;
-	float other;
+	float base;
 
 };
 

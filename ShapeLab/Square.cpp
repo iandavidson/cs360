@@ -7,6 +7,12 @@ Square::Square()
   side = 0;
 }
 
+Square::Square(float s)
+//default constructor
+{
+  side = s;
+}
+
 Square::Square(const Square & s)
 //copy constructor
 {
@@ -50,8 +56,8 @@ float Square::getPerimeter() const
 
 ostream & operator << (ostream & outs, const Square & s)
 {
-  outs << "A square with side length of " << s.getSide() << ", has a perimeter of ";
-  outs << s.getPerimeter() << ", and an area of " << s.getArea() << "." << endl;
+  outs << "Square with side: " << s.getSide() << "; perimeter: ";
+  outs << s.getPerimeter() << "; area: " << s.getArea() << "." << endl;
   return outs;
 }
 
@@ -64,6 +70,7 @@ bool Square::operator != (const Square & other) const
 {
   return side != other.side;
 }
+
 
 
 
