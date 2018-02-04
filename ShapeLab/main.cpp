@@ -10,6 +10,7 @@
 #include "IrregularPolygon.h"
 #include "Parallelogram.h"
 #include "Trapazoid.h"
+#include "RegPolygon.h"
 
 using namespace std;
 
@@ -162,7 +163,12 @@ int main()
   s1.setBottom(12.3);
   s1.setHeight(12.2);
   cout << s1 << endl;
-
+    
+  //Testing Regular Polygon
+  RegPolygon p1;
+  p1.setNumSides(6);
+  p1.setSide(12);
+  cout << p1 << endl;
 
 
 

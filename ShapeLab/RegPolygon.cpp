@@ -29,7 +29,7 @@ RegPolygon::~RegPolygon()
 RegPolygon & RegPolygon::operator = (const RegPolygon & e)
 {
 	side = e.side;	
-	numSides = e.numSides
+	numSides = e.numSides;
 	return * this;
 }
 
@@ -39,7 +39,7 @@ float RegPolygon::getSide() const
 }
 
 
-void RegPolygon::setSide1(float s)
+void RegPolygon::setSide(float s)
 {
 	side = s;
 }
@@ -62,7 +62,9 @@ float RegPolygon::getPerimeter() const
 
 float RegPolygon::getArea() const
 {
-	
+	float temp = (side * side) * numSides;
+    return temp / (4 * tan ( (180/M_PI) * (180/numSides));
+
 	//figure this out
 }
 

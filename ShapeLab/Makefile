@@ -1,6 +1,6 @@
 
-app.x: Rectangle.o Square.o EquiTris.o IsoTriangle.o RightTriangle.o ScaleneTriangle.o Circle.o Trapazoid.o Parallelogram.o IrregularPolygon.o main.o 
-	g++ -o app.x Rectangle.o Square.o EquiTris.o IsoTriangle.o RightTriangle.o ScaleneTriangle.o Circle.o Trapazoid.o Parallelogram.o IrregularPolygon.o main.o
+app.x: Rectangle.o Square.o EquiTris.o IsoTriangle.o RightTriangle.o ScaleneTriangle.o Circle.o Trapazoid.o Parallelogram.o RegPolygon.o IrregularPolygon.o main.o 
+	g++ -o app.x Rectangle.o Square.o EquiTris.o IsoTriangle.o RightTriangle.o ScaleneTriangle.o Circle.o Trapazoid.o Parallelogram.o RegPolygon.o IrregularPolygon.o main.o
 
 Rectangle.o: Rectangle.cpp Rectangle.h
 	g++ -c Rectangle.cpp -o Rectangle.o
@@ -25,6 +25,9 @@ Circle.o: Circle.cpp Circle.h
 
 IrregularPolygon.o: IrregularPolygon.cpp IrregularPolygon.h
 	g++ -c IrregularPolygon.cpp -o IrregularPolygon.o
+
+RegPolygon.o: RegPolygon.cpp RegPolygon.h
+	g++ -c RegPolygon.cpp -o RegPolygon.o 
 
 Trapazoid.o: Trapazoid.cpp Trapazoid.h
 	g++ -c Trapazoid.cpp -o Trapazoid.o
