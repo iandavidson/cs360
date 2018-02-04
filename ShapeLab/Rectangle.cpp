@@ -16,6 +16,15 @@ Rectangle::Rectangle(const Rectangle & s)
   side2 = s.side2;
 }
 
+Rectangle::Rectangle(float s1, float s2)
+//overloaded constructor
+{
+  //this.setSide(s.getSide());
+  side1 = s1;
+  side2 = s2;
+}
+
+
 Rectangle::~Rectangle()
 {
 

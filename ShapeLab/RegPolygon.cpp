@@ -68,7 +68,7 @@ float RegPolygon::getArea() const
 
 ostream & operator << (ostream & outs, const RegPolygon & r)
 {
-	outs << "A scalene triangle with side1 length of " << r.getSide() << "; total sides: ";
+	outs << "Regular Polygon with all sides: " << r.getSide() << "; total sides: ";
 	outs << r.getNumSides() << "; perimeter: ";
   	outs << r.getPerimeter() << "; area: "; 
   	outs << r.getArea() << "." << endl;

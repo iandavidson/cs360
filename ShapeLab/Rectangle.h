@@ -12,6 +12,7 @@ class Rectangle
 
   Rectangle();//constructor
   Rectangle(const Rectangle & Rectangle);//copy constructor
+  Rectangle(float s1, float s2);
   ~Rectangle();//destructor
 
   Rectangle & operator = (const Rectangle & s);//overloaded assignment
