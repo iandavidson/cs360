@@ -37,8 +37,8 @@ class IrregularPolygon
  private:
 
   int numSides;
-  float sides[];
-  float angles[];
+  float *sides;
+  float *angles;
 
   void setNumSides(float i);  //  will literally break it
   float triangleArea(float s1, float s2, float s3) const;

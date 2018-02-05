@@ -18,44 +18,57 @@ int main()
 {
 
 //square testing:
-  // Square s1;//def constructor
-  // s1.setSide(6.5); //calls set side
+   Square s1;//def constructor
+   s1.setSide(6.5); //calls set side
+   cout << "s1: " << s1;//output operator
 
-  // cout << s1;//output operator
-
-  // Square s2 = s1;//copy constructor used
-
-  // cout << s2;
-
-  // s2.setSide(8.5);
+   Square s2 = s1;//copy constructor used
+   cout << "s2: " << s2;
   
-  // Square s3;
+   s2.setSide(8.5);
+   Square s3;
+   s3 = s2;//overloaded assignment operator used
+   cout << "s3: " << s3;
+   
+   //Testing inequality
+   if (s3 != s2){
+       cout << "Square inequality failed\n";
+       exit(1);
+   }
+   // Testing equailty
+   if ( s1 == s3){
+       cout << "Square equality failed\n";
+       exit(1);
+   }
 
-  // s3 = s2;//overloaded assignment operator used
-
-  // cout << s3;
-
+  
   
 
 //Equalateral testing
 
-  // EqualTriangle e1;
-  // e1.setSide(10);
+   Equilateral e1;//def constructor
+   e1.setSide(6.5); //calls set side
+   cout << "e1: " << e1;//output operator
 
-  // cout << e1;
+   Equilateral e2 = e1;//copy constructor used
+   cout << "e2: " << e2;
   
+   e2.setSide(8.5);
+   Equilateral e3;
+   e3 = e2;//overloaded assignment operator used
+   cout << "e3: " << e3;
+   
+   //Testing inequality
+   if (e3 != e2){
+       cout << "Equilateral inequality failed\n";
+       exit(1);
+   }
+   // Testing equailty
+   if ( e1 == e3){
+       cout << "Equilateral equality failed\n";
+       exit(1);
+   }
 
-  // EqualTriangle e2 = e1;
-
-  // e2.setSide(15);
-
-  // cout << e2;
-
-  // EqualTriangle e3;
-
-  // e3 = e2;
-
-  // cout << e3;
 
 //Iso triangle testing
 
@@ -158,7 +171,7 @@ int main()
   //cout << p1 << endl;
   
   //Testing for a Trapezoid
-  Trapazoid s1;
+  /*Trapazoid s1;
   s1.setTop(12.6);
   s1.setBottom(12.3);
   s1.setHeight(12.2);
@@ -170,7 +183,7 @@ int main()
   p1.setSide(12);
   cout << p1 << endl;
 
-
+  */
 
    cout <<"successful" << endl;
 
