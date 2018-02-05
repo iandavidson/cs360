@@ -1,34 +1,34 @@
-#include "ScaleneTriangle.h"
+#include "Scalene.h"
 
 using namespace std;
 
-ScaleneTriangle::ScaleneTriangle()
+Scalene::Scalene()
 {
 	side1 = 0;
 	side2 = 0;
 	side3 = 0;
 }
 
-ScaleneTriangle::ScaleneTriangle(float s1, float s2, float s3)
+Scalene::Scalene(float s1, float s2, float s3)
 {
 	side1 = s1;
 	side2 = s2;
 	side3 = s3;
 }
 
-ScaleneTriangle::ScaleneTriangle(const ScaleneTriangle & e)
+Scalene::Scalene(const Scalene & e)
 {
 	side1 = e.side1;
 	side2 = e.side2;
 	side3 = e.side3;
 }
 
-ScaleneTriangle::~ScaleneTriangle()
+Scalene::~Scalene()
 {
 
 }
 
-ScaleneTriangle & ScaleneTriangle::operator = (const ScaleneTriangle & e)
+Scalene & Scalene::operator = (const Scalene & e)
 {
 	side1 = e.side1;
 	side2 = e.side2;
@@ -36,52 +36,52 @@ ScaleneTriangle & ScaleneTriangle::operator = (const ScaleneTriangle & e)
 	return * this;
 }
 
-float ScaleneTriangle::getSide1() const
+float Scalene::getSide1() const
 {
 	return side1;
 }
 
 
-void ScaleneTriangle::setSide1(float s)
+void Scalene::setSide1(float s)
 {
 	side1 = s;
 }
 
-float ScaleneTriangle::getSide2() const
+float Scalene::getSide2() const
 {
 	return side2;
 }
 
 
-void ScaleneTriangle::setSide2(float s)
+void Scalene::setSide2(float s)
 {
 	side2 = s;
 }
 
-float ScaleneTriangle::getSide3() const
+float Scalene::getSide3() const
 {
 	return side3;
 }
 
 
-void ScaleneTriangle::setSide3(float s)
+void Scalene::setSide3(float s)
 {
 	side3 = s;
 }
 
-float ScaleneTriangle::getPerimeter() const
+float Scalene::getPerimeter() const
 {
 	return side1 + side2 + side3;
 }
 
-float ScaleneTriangle::getArea() const
+float Scalene::getArea() const
 {
 	float s = (side1 + side2 + side3)/2;
 	return sqrt(s * (s - side1) * (s - side2) * (s - side3));
 	//figure this out
 }
 
-ostream & operator << (ostream & outs, const ScaleneTriangle & r)
+ostream & operator << (ostream & outs, const Scalene & r)
 {
 	outs << "Scalene triangle with side1: " << r.getSide1() << "; side2: ";
 	outs << r.getSide2() << " ; side3: " << r.getSide3() << ", perimeter: ";
@@ -90,7 +90,7 @@ ostream & operator << (ostream & outs, const ScaleneTriangle & r)
   	return outs;
 }
 
-bool ScaleneTriangle::operator == (ScaleneTriangle that) const
+bool Scalene::operator == (Scalene that) const
 {
 	if(that.side1 == side1 && that.side2 == side2 && that.side3 == side3)
 		return true;
@@ -98,7 +98,7 @@ bool ScaleneTriangle::operator == (ScaleneTriangle that) const
 }
 
 
-bool ScaleneTriangle::operator != (const ScaleneTriangle & that) const
+bool Scalene::operator != (const Scalene & that) const
 {
 	if(that.side1 == side1 && that.side2 == side2 && that.side3 == side3)
 		return false;

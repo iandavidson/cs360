@@ -1,21 +1,21 @@
-#ifndef SCALENETRIANGLE_H
-#define SCALENETRIANGLE_H
+#ifndef SCALENE_H
+#define SCALENE_H
 
 #include <iostream>
 #include <iomanip>
 #include <cmath>
 
 using namespace std;
-//not done!!
-class ScaleneTriangle
+
+class Scalene
 {
 public:
-	ScaleneTriangle();
-	ScaleneTriangle(float s1, float s2, float s3);
-	ScaleneTriangle(const ScaleneTriangle & r);
-	~ScaleneTriangle();
+	Scalene();
+	Scalene(float s1, float s2, float s3); //sides: 1, 2 and 3 
+	Scalene(const Scalene & r);
+	~Scalene();
 
-	ScaleneTriangle & operator = (const ScaleneTriangle & r);
+	Scalene & operator = (const Scalene & r);
 
 	float getSide1() const;
 	void setSide1(float s);
@@ -29,10 +29,10 @@ public:
 	float getArea()const;
 	float getPerimeter()const;
 
-	friend ostream & operator << (ostream & outs, const ScaleneTriangle & e);
+	friend ostream & operator << (ostream & outs, const Scalene & e);
 
-	bool operator == (ScaleneTriangle other) const;
-	bool operator != (const ScaleneTriangle & other) const;
+	bool operator == (Scalene other) const;
+	bool operator != (const Scalene & other) const;
 
 private:
 	float side1;

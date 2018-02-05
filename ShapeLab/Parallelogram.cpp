@@ -81,9 +81,9 @@ float Parallelogram::getPerimeter() const
 
 ostream & operator << (ostream & outs, const Parallelogram & s)
 {
-  outs << "A Parallelogram with side1: " << s.getSide1() << " , side2: ";
-  outs <<  s.getSide2() << " , angle: " << s.getAngle() << ", perimeter: ";
-  outs << s.getPerimeter() << ", area: " << s.getArea() << "." << endl;
+  outs << "Parallelogram with side1: " << s.getSide1() << "; side2: ";
+  outs <<  s.getSide2() << "; angle: " << s.getAngle() << "; perimeter: ";
+  outs << s.getPerimeter() << "; area: " << s.getArea() << "." << endl;
   return outs;
 }
 

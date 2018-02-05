@@ -62,7 +62,7 @@ float Rhombus::getArea() const
 {
   // side^2 * sin(a-radians)
   float temp  = (side * side);
-  return temp * sin (a * (M_PI / 180));
+  return temp * sin (angle * (M_PI / 180));
 }
 
 float Rhombus::getPerimeter() const

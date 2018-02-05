@@ -56,8 +56,8 @@ float Circle::getPerimeter() const
 
 ostream & operator << (ostream & outs, const Circle & s)
 {
-  outs << "A Circle with radius length of " << s.getRadius() << ", has a circumfrence of ";
-  outs << s.getPerimeter() << ", and an area of " << s.getArea() << "." << endl;
+  outs << "A Circle with radius: " << s.getRadius() << "; circumfrence: ";
+  outs << s.getPerimeter() << "; area: " << s.getArea() << "." << endl;
   return outs;
 }
 

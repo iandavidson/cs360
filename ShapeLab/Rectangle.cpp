@@ -74,9 +74,9 @@ float Rectangle::getPerimeter() const
 
 ostream & operator << (ostream & outs, const Rectangle & s)
 {
-  outs << "A Rectangle with side1 length of " << s.getSide1() << " and a side2 of length ";
-  outs <<  s.getSide2() <<", has a perimeter of ";
-  outs << s.getPerimeter() << ", and an area of " << s.getArea() << "." << endl;
+  outs << "Rectangle with side1: " << s.getSide1() << "; side2: ";
+  outs <<  s.getSide2() <<"; perimeter: ";
+  outs << s.getPerimeter() << "; area: " << s.getArea() << "." << endl;
   return outs;
 }
 

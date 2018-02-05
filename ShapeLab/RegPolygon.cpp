@@ -63,14 +63,14 @@ float RegPolygon::getPerimeter() const
 float RegPolygon::getArea() const
 {
 	float temp = (side * side) * numSides;
-    return temp / (4 * tan ( (180/M_PI) * (180/numSides));
-
-	//figure this out
+    return temp / (4 * tan ( (180/M_PI) * (180/numSides)));
 }
+	//figure this out
+
 
 ostream & operator << (ostream & outs, const RegPolygon & r)
 {
-	outs << "Regular Polygon with all sides: " << r.getSide() << "; total sides: ";
+	outs << "Regular Polygon with all sides: " << r.getSide() << "; total num sides: ";
 	outs << r.getNumSides() << "; perimeter: ";
   	outs << r.getPerimeter() << "; area: "; 
   	outs << r.getArea() << "." << endl;
@@ -79,7 +79,7 @@ ostream & operator << (ostream & outs, const RegPolygon & r)
 
 bool RegPolygon::operator == (RegPolygon that) const
 {
-	if(that.side1 == side1 && that.side2 == side2 && that.side3 == side3)
+	if(that.side == side && that.numSides == numSides)
 		return true;
 	return false;
 }
@@ -87,7 +87,7 @@ bool RegPolygon::operator == (RegPolygon that) const
 
 bool RegPolygon::operator != (const RegPolygon & that) const
 {
-	if(that.side1 == side1 && that.side2 == side2 && that.side3 == side3)
+	if(that.side == side && that.numSides == numSides)
 		return false;
 	return true;
 }
