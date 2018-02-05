@@ -12,7 +12,7 @@ class IrregularPolygon
 {
  public:
 
-  IrregularPolygon(int numSides, vector<float> sides, vector <float> angles);//constructor
+  IrregularPolygon(int numSides, float s[], float a[]);//constructor
   IrregularPolygon(const IrregularPolygon & IrregularPolygon);//copy constructor
   ~IrregularPolygon();//destructor
 
@@ -20,9 +20,9 @@ class IrregularPolygon
   
   float getNumSides()const;
   
-  vector<float>  getSides()const;
+  float*  getSides()const;
   
-  vector<float>  getAngles()const;
+  float*  getAngles()const;
 
   float getArea()const;
 
@@ -37,8 +37,8 @@ class IrregularPolygon
  private:
 
   int numSides;
-  vector<float> sides;
-  vector<float> angles;
+  float sides[];
+  float angles[];
 
   void setNumSides(float i);  //  will literally break it
   float triangleArea(float s1, float s2, float s3) const;

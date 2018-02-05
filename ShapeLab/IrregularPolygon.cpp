@@ -3,39 +3,54 @@
 
 using namespace std;
 
-IrregularPolygon::IrregularPolygon(int numSides, vector<float> sides, vector <float> angles)
+IrregularPolygon::IrregularPolygon(int num, float s[], float a[])
 //default constructor
 {
-    if(numSides > 2){
-      this->numSides = numSides;
-      this->sides = sides;
-      this->angles = angles;
-    
-    }else{
-      //doesnt make sense; go screw yourself
-      exit(1);
-    }
+    //we expect there to be atleast 3 sides to make the object
+    //and the arrays passed in as parameters to have enough data for specified number of sides.
+  numSides = num;
+  sides = new float[numSides];
+  angles = new float[numSides];
+  for (int i = 0; i < numSides; i++)
+  {
+    sides[i] = s[i];
+    angles[i] = a[i];
+  }
+
+
 }
 
 IrregularPolygon::IrregularPolygon(const IrregularPolygon & s)
 //copy constructor
 {
-  numSides = s.getNumSides();
-  sides = s.getSides();
-  angles = s.getAngles();
+  numSides = s.numSides;
+  sides = new float[numSides];
+  angles = new float[numSides];
+  for(int i = 0; i < numSides; i++)
+  {
+    sides[i] = s.sides[i];
+    angles[i] = s.angles[i];
+  }
+
+
 }
 
 IrregularPolygon::~IrregularPolygon()
 {
+  delete[] sides;
+  delete[] angles;
 
 }
 
 IrregularPolygon & IrregularPolygon::operator = (const IrregularPolygon & s) //overloaded assignment operator
-//edit this shit
+//deep copy
 {
-  numSides = s.getNumSides();
-  sides = s.getSides();
-  angles = s.getAngles();
+  numSides = s.numSides;
+  for( int i =0; i < numSides; i++){
+    sides[i] = s.sides[i];
+    angles[i] = s.angles[i];
+  }
+
   return * this;
   
 }
@@ -46,13 +61,13 @@ float  IrregularPolygon::getNumSides() const
 
 }
 
-vector<float> IrregularPolygon::getSides() const
+float* IrregularPolygon::getSides() const
 {
   return sides;
 
 }
 
-vector<float> IrregularPolygon::getAngles() const
+float* IrregularPolygon::getAngles() const
 {
   return angles;
 
@@ -60,11 +75,9 @@ vector<float> IrregularPolygon::getAngles() const
 
 float IrregularPolygon::triangleArea(float s1, float s2, float s3) const
 {
-  cout << "s1: " << s1 << " s2: " << s2 << " s3: " << s3 << endl;
+  //cout << "s1: " << s1 << " s2: " << s2 << " s3: " << s3 << endl;
   float s = (s1 + s2 + s3)/2;
   s = (s *(s - s1) * (s - s2) * (s - s3));
-  if(s < 0)
-    s = -1 * s;
   return sqrt(s);
 }
 
@@ -72,70 +85,65 @@ float IrregularPolygon::getArea() const
 
 {
 
-  // float temp = triangleArea(sides[0], sides[1], sides[2]);
-  // cout << "triangle area 1" << temp << endl;
+//   // float temp = triangleArea(sides[0], sides[1], sides[2]);
+//   // cout << "triangle area 1" << temp << endl;
 
-  if(numSides == 3){
-    return triangleArea(sides[0], sides[1], sides[2]);
-  }
+  //must have at least 4 sides to use the further algorithm
+  if(numSides == 3)
+    {
+      return triangleArea(sides[0], sides[1], sides[2]);
+    }
   float area = 0;
   int currentSideIndex = numSides - 1;
   int currentAngleIndex = numSides - 1;
-  //must have at least 4 sides
-  vector <float> lines;
-  vector<float> partialAngles;
-  float line1, partialAngle1, temp;
-  bool firstLoop = true;
+  // for lines drawn
+  float lines[numSides]; 
+  // for partial Angles;
+  float partialAngles[numSides];
+  //   define lineTemp, partialAngleTemp, temp;
+  float lineTemp; 
+  float partialAngleTemp; 
+  float temp;
   int l = 0;//lines/partialAngles accumulator 
+
+
+//   //compute cosine idenity with a[0] side[0] & side[currentSideIndex]
+  lineTemp = (sides[0] * sides[0]) + (sides[currentSideIndex] * sides[currentSideIndex]);
+  temp =  (sides[0] * sides[currentSideIndex]) * cos (angles[0] * M_PI / 180);
+//    cout << "temp: " << temp << endl;
+  lineTemp += sqrt(2 * temp);
+//     cout << "cos(angle[0])" << cos(angles[0]) << endl;
+  lines[l] = lineTemp;
+//    //now with line we can do sine law to get the part of angles[currentSideIndex]
+  partialAngleTemp = (lines[0]*angles[0])/sides[currentSideIndex];
+  partialAngles[l] = partialAngleTemp;
+  area += triangleArea(sides[0], sides[currentSideIndex], lines[0]);  //add first 
+  currentSideIndex--;
+//       cout << "made it through the first iteration" << endl;
+
   while(currentSideIndex > 2){
-     
-    if(firstLoop){
-      //compute cosine idenity with a[0] side[0] & side[currentSideIndex]
-      line1 = (sides[0] * sides[0]) + (sides[currentSideIndex] * sides[currentSideIndex]);
-      temp = -1 * (sides[0] * sides[currentSideIndex]) * cos (angles[0]);
-      cout << "temp: " << temp << endl;
-      line1 += sqrt(2 * temp);
-      //cout << "cos(angle[0])" << cos(angles[0]) << endl;
-      lines.push_back(line1);
-      //now with line we can do sine law to get the part of angles[currentSideIndex]
-      partialAngle1 = (lines[0]*angles[0])/sides[currentSideIndex];
-      partialAngles.push_back(partialAngle1);
-      
-      area += triangleArea(sides[0], sides[currentSideIndex], lines[0]);  //add first 
 
-      //float angles[currentAngleIndex] - partialAngle1;
-
-      currentSideIndex--;
-      firstLoop = false;
-      cout << "made it through the first iteration" << endl;
-    }
-  
-  line1 = (lines[l] *  lines[l]) + (sides[currentSideIndex] * sides[currentSideIndex]);
-  line1 += sqrt(-1 * (2 * sides[currentSideIndex] * lines[l] * cos (angles[currentAngleIndex] - partialAngles[l])));
-  lines.push_back(line1);
-
-  partialAngle1 = (lines[l] * partialAngles[l])/ sides[currentSideIndex];
-  partialAngles.push_back(partialAngle1);
-
+  lineTemp = (lines[l] *  lines[l]) + (sides[currentSideIndex] * sides[currentSideIndex]);
+  lineTemp += sqrt( 2 * sides[currentSideIndex] * lines[l] * cos ((angles[currentAngleIndex] - partialAngles[l])* M_PI/ 180));
+  lines[l + 1] = lineTemp;
+  partialAngleTemp = (lines[l] * partialAngles[l])/ sides[currentSideIndex];
+  partialAngles[l + 1] = partialAngleTemp;
   temp = triangleArea(sides[currentSideIndex], lines[l], lines[l+1]);
   area += temp;
-  //cout << "triangle area: " << triangleArea(sides[currentSideIndex], lines[l], lines[l+1]);
-  //things to inc/dec:  
-  //  ++: l
-  //  --: currentSideIndex, currentAngleIndex  
+//   //cout << "triangle area: " << triangleArea(sides[currentSideIndex], lines[l], lines[l+1]);
+//   //things to inc/dec:  
+//   //  ++: l
+//   //  --: currentSideIndex, currentAngleIndex  
 
   l++;
   currentSideIndex--;
   currentAngleIndex--;
-  cout << "after iteration; l:" << l << " csi: " << currentSideIndex << " cai: " << currentAngleIndex << endl;
-  }
+//   cout << "after iteration; l:" << l << " csi: " << currentSideIndex << " cai: " << currentAngleIndex << endl;
+}
 
 
   // compute & += area of last triangle
   temp = triangleArea(sides[1], sides[2], lines[l]);
-  if(temp < 0)
-    temp = temp * (- 1);
-  area += temp;
 
   cout << "area: " << area << endl;
   return area;
