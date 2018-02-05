@@ -63,8 +63,12 @@ float RegPolygon::getPerimeter() const
 float RegPolygon::getArea() const
 {
 	float temp = (side * side) * numSides;
-    return temp / (4 * tan ( (180/M_PI) * (180/numSides)));
+    float temp2 = temp / (4 * tan ( (180/M_PI) * (180/numSides)));
+    if (0 > temp2)
+        return temp2 * -1;
+    return temp2;
 }
+
 	//figure this out
 
 

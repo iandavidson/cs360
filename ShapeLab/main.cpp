@@ -20,6 +20,7 @@ int main()
 //square testing:
    Square s1;//def constructor
    s1.setSide(6.5); //calls set side
+   cout << endl << "Testing Square-------------------\n";
    cout << "s1: " << s1;//output operator
 
    Square s2 = s1;//copy constructor used
@@ -48,6 +49,7 @@ int main()
 
    Equilateral e1;//def constructor
    e1.setSide(6.5); //calls set side
+   cout << endl << "Testing Equilateral-------------------\n";
    cout << "e1: " << e1;//output operator
 
    Equilateral e2 = e1;//copy constructor used
@@ -71,106 +73,173 @@ int main()
 
 
 //Iso triangle testing
+   
+   Isosceles i1;//def constructor
+   i1.setSide(6.5); //calls set side
+   i1.setBase(12.4); //calls set base
+   cout << endl << "Testing Isoceles-------------------\n";
+   cout << "i1: " << i1;//output operator
 
-  // IsoTriangle i1; 
-  // i1.setSide(45);
-  // i1.setBase(20);
+   Isosceles i2 = i1;//copy constructor used
+   cout << "i2: " << i2;
+  
+   i2.setSide(8.5);
+   i2.setBase(5.4);
+   Isosceles i3;
+   i3 = i2;//overloaded assignment operator used
+   cout << "i3: " << i3;
+   
+   //Testing inequality
+   if (i3 != i2){
+       cout << "Iso inequality failed\n";
+       exit(1);
+   }
+   // Testing equailty
+   if ( i1 == i3){
+       cout << "Iso equality failed\n";
+       exit(1);
+   }
 
-  // cout << i1;
-
-  // IsoTriangle i2 = i1;
-
-  // i2.setSide(25);
-  // i2.setBase(5);
-
-  // IsoTriangle i3;
-
-  // i3 = i2;
-
-  // cout << i3;
-
-  // cout <<"successful" << endl;
 
 //Right triangle testing
+   
+   Right r1;//def constructor
+   r1.setSide(6.5); //calls set side
+   r1.setBase(12.4); //calls set base
+   cout << endl << "Testing Right-------------------\n";
+   cout << "r1: " << r1;//output operator
 
-  // RightTriangle r1; 
-  // r1.setSide(45);
-  // r1.setOther(20);
+   Right r2 = r1;//copy constructor used
+   cout << "r2: " << r2;
+  
+   r2.setSide(8.5);
+   r2.setBase(5.4);
+   Right r3;
+   r3 = r2;//overloaded assignment operator used
+   cout << "r3: " << r3;
+   
+   //Testing inequality
+   if (r3 != r2){
+       cout << "Right inequality failed\n";
+       exit(1);
+   }
+   // Testing equailty
+   if ( r1 == r3){
+       cout << "Right equality failed\n";
+       exit(1);
+   }
 
-  // cout << r1;
-
-  // RightTriangle r2 = r1;
-
-  // r2.setSide(25);
-  // r2.setOther(5);
-
-  // RightTriangle r3;
-
-  // r3 = r2;
-
-  // cout << r3;
-  // float side, other, area;
-  // side = r3.getSide();
-  // other = r3.getOther();
-  // area = side * other;
-  // area /= 2;
-  // cout << " area" << area << endl;
 
 //Scalene triangle testing
+   
+   Scalene sc1;//def constructor
+   sc1.setSide1(6.5); //calls set side
+   sc1.setSide2(12.4); //calls set base
+   sc1.setSide3(6.7);
+   cout << endl << "Testing Right-------------------\n";
+   cout << "sc1: " << sc1;//output operator
 
-  // ScaleneTriangle s1;
-  // s1.setSide1(5);
-  // s1.setSide2(6);
-  // s1.setSide3(7);
-
-  //cout << s1; //all get all sides, get area and perimeter and output operator
-
-
-  // ScaleneTriangle s2 = s1; //copy constructor
-
-
-  // s2.setSide3(10);
-
-  // s1 = s2;
-
-  // cout << s1 << "side3 should be 10, not 7" << endl;
-
-
-  // if(s1 == s2){
-    // cout << "equality not works" << endl;
-  // }
-
-  // s1.setSide2(15);
-
-  // if(s1 != s2){
-   //  cout << "inequality operator works" << endl;
-  //}
+   Scalene sc2 = sc1;//copy constructor used
+   cout << "sc2: " << sc2;
   
-  /*vector<float> sides;
-  sides.push_back(12);
-  sides.push_back(23);
-  sides.push_back(34);
-  sides.push_back(54);
-  vector<float> angles;
-  angles.push_back(60);
-  angles.push_back(100);
-  angles.push_back(100);
-  angles.push_back(100);
+   sc2.setSide1(8.5);
+   sc1.setSide3(5.7);
+   sc1.setSide3(23.7);
+   Scalene sc3;
+   sc3 = sc2;//overloaded assignment operator used
+   cout << "sc3: " << sc3;
+   
+   //Testing inequality
+   if (sc3 != sc2){
+       cout << "Scalene inequality failed\n";
+       exit(1);
+   }
+   // Testing equailty
+   if ( sc1 == sc3){
+       cout << "Scalene equality failed\n";
+       exit(1);
+   }
+
+// IrregularPolygon testing
+
+  float sides [4] = { 12, 23, 34, 54 };
+  float angles [4] = { 60, 100, 100, 100 };
   
   IrregularPolygon *poly = new IrregularPolygon(4, sides, angles);
+  cout << endl << "Testing Irreg Poly-------------------\n";
+  cout << "poly: " << *poly;
 
-  cout << *poly << endl;
-  delete poly;
-  */
-
-  // Testing for Parallleogram
-  //Parallelogram p1;
-  //p1.setSide1(20);
-  //p1.setSide2(20);
-  //p1.setAngle(60);
-  //cout << p1 << endl;
+  IrregularPolygon *poly2 = poly; //copy constructor used
+  cout << "poly2: " << *poly2 << endl; 
   
-  //Testing for a Trapezoid
+  delete poly;
+  delete poly2;
+
+// RegPolygon testing
+   
+   RegPolygon rp1;//def constructor
+   rp1.setSide(6.5); //calls set side
+   rp1.setNumSides(12); //calls set num sides 
+   cout << endl << "Testing RegPolygon-------------------\n";
+   cout << "rp1: " << rp1;//output operator
+
+   RegPolygon rp2 = rp1;//copy constructor used
+   cout << "rp2: " << rp2;
+   
+   rp2.setSide(9.4); //calls set side
+   rp2.setNumSides(20); //calls set num sides 
+   
+   RegPolygon rp3;
+   rp3 = rp2;//overloaded assignment operator used
+   cout << "rp3: " << rp3;
+   
+   //Testing inequality
+   if (rp3 != rp2){
+       cout << "Regular Polygon inequality failed\n";
+       exit(1);
+   }
+   // Testing equailty
+   if ( rp1 == rp3){
+       cout << "Regular Polygon equality failed\n";
+       exit(1);
+   }
+
+// Parallelogram testing 
+
+   Parallelogram p1;//def constructor
+   p1.setSide1(6.5); //calls set side
+   p1.setSide2(34.5); //calls set side
+   p1.setAngle(30.6); //calls set angle
+   cout << endl << "Testing Parallelogram-------------------\n";
+   cout << "p1: " << p1;//output operator
+
+   Parallelogram p2 = p1;//copy constructor used
+   cout << "p2: " << p2;
+   
+   p2.setSide1(9.4); //calls set side
+   p2.setSide2(23.4); //calls set side
+   p2.setAngle(23.5); //calls set num sides 
+   
+   Parallelogram p3;
+   p3 = p2;//overloaded assignment operator used
+   cout << "p3: " << p3;
+   
+   //Testing inequality
+   if (p3 != p2){
+       cout << "Paralleogram inequality failed\n";
+       exit(1);
+   }
+   // Testing equailty
+   if ( p1 == p3){
+       cout << "Paralleogram equality failed\n";
+       exit(1);
+   }
+
+//Testing for a Trapezoid
+  
+  
+  
+  
   /*Trapazoid s1;
   s1.setTop(12.6);
   s1.setBottom(12.3);
