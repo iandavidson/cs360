@@ -16,7 +16,7 @@ using namespace std;
 
 int main()
 {
-
+/*
 //square testing:
    Square s1;//def constructor
    s1.setSide(6.5); //calls set side
@@ -159,11 +159,12 @@ int main()
        cout << "Scalene equality failed\n";
        exit(1);
    }
-
+*/
 // IrregularPolygon testing
 
-  float sides [4] = { 12, 23, 34, 54 };
-  float angles [4] = { 60, 100, 100, 100 };
+  //float sides [4] = { 12, 23, 34, 54 };
+  float sides [4] = { 12, 12, 12, 12 };
+  float angles [4] = { 90, 90, 90, 90 };
   
   IrregularPolygon *poly = new IrregularPolygon(4, sides, angles);
   cout << endl << "Testing Irreg Poly-------------------\n";
@@ -176,7 +177,7 @@ int main()
   delete poly2;
 
 // RegPolygon testing
-   
+/*   
    RegPolygon rp1;//def constructor
    rp1.setSide(6.5); //calls set side
    rp1.setNumSides(12); //calls set num sides 
@@ -234,7 +235,7 @@ int main()
        cout << "Paralleogram equality failed\n";
        exit(1);
    }
-
+*/
 //Testing for a Trapezoid
   
   

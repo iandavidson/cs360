@@ -13,12 +13,10 @@ IrregularPolygon::IrregularPolygon(int num, float s[], float a[])
   angles = new float[numSides];
   for (int i = 0; i < numSides; i++)
   {
-    sides[numSides - 1 - i] = s[i];
-    angles[numSides - 1 - i] = a[i];
-    // sides[i] = s[i];
-    // angles[i] = a[i];
+    sides[i] = s[i];
+    angles[i] = a[i];
   }
-  
+
 
 }
 
@@ -77,10 +75,10 @@ float* IrregularPolygon::getAngles() const
 
 float IrregularPolygon::triangleArea(float s1, float s2, float s3) const
 {
-  cout << "s1: " << s1 << " s2: " << s2 << " s3: " << s3 << endl;
+  //cout << "s1: " << s1 << " s2: " << s2 << " s3: " << s3 << endl;
   float s = (s1 + s2 + s3)/2;
   s = (s *(s - s1) * (s - s2) * (s - s3));
-  return sqrt(abs(s));
+  return sqrt(s);
 }
 
 float IrregularPolygon::getArea() const
@@ -112,9 +110,8 @@ float IrregularPolygon::getArea() const
 //   //compute cosine idenity with a[0] side[0] & side[currentSideIndex]
   lineTemp = (sides[0] * sides[0]) + (sides[currentSideIndex] * sides[currentSideIndex]);
   temp =  (sides[0] * sides[currentSideIndex]) * cos (angles[0] * M_PI / 180);
-   cout << "temp: " << temp << endl;
-  lineTemp = sqrt(abs(lineTemp - (2 * temp)));
-  cout << "lineTemp first iter: " << lineTemp << endl;
+//    cout << "temp: " << temp << endl;
+  lineTemp += sqrt(2 * temp);
 //     cout << "cos(angle[0])" << cos(angles[0]) << endl;
   lines[l] = lineTemp;
 //    //now with line we can do sine law to get the part of angles[currentSideIndex]
@@ -126,28 +123,25 @@ float IrregularPolygon::getArea() const
 
   while(currentSideIndex > 2){
 
-  lineTemp = (lines[l] *  lines[l]) + (sides[currentSideIndex] * sides[currentSideIndex]);
-  lineTemp = sqrt( abs(lineTemp - (2 * sides[currentSideIndex] * lines[l] * cos ((angles[currentAngleIndex] - partialAngles[l])* M_PI/ 180))));
-  lines[l + 1] = lineTemp;
-  partialAngleTemp = (lines[l] * partialAngles[l])/ sides[currentSideIndex];
-  partialAngles[l + 1] = partialAngleTemp;
-  temp = triangleArea(sides[currentSideIndex], lines[l], lines[l+1]);
-  area += temp;
-  cout << "area: " << area << endl;
+    lineTemp = (lines[l] *  lines[l]) + (sides[currentSideIndex] * sides[currentSideIndex]);
+    lineTemp += sqrt( 2 * sides[currentSideIndex] * lines[l] * cos ((angles[currentAngleIndex] - partialAngles[l])* M_PI/ 180));
+    lines[l + 1] = lineTemp;
+    partialAngleTemp = (lines[l] * partialAngles[l])/ sides[currentSideIndex];
+    partialAngles[l + 1] = partialAngleTemp;
+    temp = triangleArea(sides[currentSideIndex], lines[l], lines[l+1]);
+    area += temp;
 //   //cout << "triangle area: " << triangleArea(sides[currentSideIndex], lines[l], lines[l+1]);
 //   //things to inc/dec:  
 //   //  ++: l
 //   //  --: currentSideIndex, currentAngleIndex  
 
-  l++;
-  currentSideIndex--;
-  currentAngleIndex--;
+    l++;
+    currentSideIndex--;
+    currentAngleIndex--;
 //   cout << "after iteration; l:" << l << " csi: " << currentSideIndex << " cai: " << currentAngleIndex << endl;
-}
-
-
+  }
   // compute & += area of last triangle
-  area += triangleArea(sides[1], sides[2], lines[l]);
+  temp = triangleArea(sides[1], sides[2], lines[l]);
 
   cout << "area: " << area << endl;
   return area;
